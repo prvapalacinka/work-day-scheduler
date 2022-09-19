@@ -34,14 +34,3 @@ function setColor(element, color) {
 }
 
 
-
-var input = document.getElementById('inputBox').value;
-localStorage.setItem('server', input);
-
-document.getElementById('inputBox').value = localStorage.getItem('server');
-
-/*event listener click button to save*/
-document.getElementsByClassName("saveBtn").addEventListener("click", function()
-if {
-    
-});
