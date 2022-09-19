@@ -70,7 +70,14 @@ textarea {
   transition: all 0.3s ease-in-out;
 }
 
+.col {
+  width: 280px;
+}
 
+#inputBox {
+  width: 700px;
+  height: 50px;
+}
 
 
 

@@ -1,8 +1,12 @@
-var today = moment ();
+var today = moment (); 
 $('#currentDay').text(today.format('LL'));
+var tz = moment.tz.guess ();
+console.log(tz);
+$('#currentTime').moment.tz.guess();
+
 
 const rows = document.getElementsByClassName("row");
-let currentHour = parseInt(moment().format('HH:mm'));
+let currentHour = parseInt(moment(stillUtc).local().format('HH:mm:ss'));
 
 Array.from(rows).forEach(row => {
     let
@@ -28,3 +32,8 @@ Array.from(rows).forEach(row => {
 function setColor(element, color) {
     element.style.backgroundColor = color;
 }
+
+
+
+var input = document.getElementById("inputBox");
+localStorage.setItem("server", input.val());
