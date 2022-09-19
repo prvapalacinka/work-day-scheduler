@@ -1,4 +1,6 @@
-var textContent = document.querySelectorAll("#saveButton");
+var saveContent = document.querySelectorAll("#saveButton");
+var textContent = document.querySelectorAll("#inputBox");
+
 
 var today = moment (); 
 $('#currentDay').text(today.format('LL'));
@@ -38,16 +40,33 @@ function setColor(element, color) {
     element.style.backgroundColor = color;
 }
 
-function saveEvent () {
-    var input = document.getElementById("inputBox");
+function saveEvent (showList) {
+    showList = [];
+    for (i = 0; i < textContent.length; i++) {
+        console.log(textContent[i]);
+        if (textContent[i].value != ""){
+            console.log(show);
+            show = {name: textContent[i].name, text: textContent[i].value};
+            showList.push(show);
+        }
+    }
+    console.log(showList);
 
-    localStorage.setItem("server", input.value());
-    
-    var storedValue = localStorage.getItem("server"); 
+    localStorage.setItem("showList", JSON.stringify(showList));
+
 }
 
-console.log(textContent);
+var showList = JSON.parse(localStorage.getItem('showList') || "[]");
+console.log(showList);
 for (i = 0; i < textContent.length; i++) {
+    for(j = 0; j < showList.length; j++) {
+        if (textContent[i].name === showList[j].name){
+            textContent[i].value = showList[j].value;
+        }
+    }
 
-    textContent[i].addEventListener("click", saveEvent)
+}
+
+for (i = 0; i < saveContent.length; i++) {
+    saveContent[i].addEventListener("click", saveEvent(showList))
 }
