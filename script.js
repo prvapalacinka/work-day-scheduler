@@ -1,14 +1,19 @@
+var textContent = document.querySelectorAll("#saveButton");
+
 var today = moment (); 
 $('#currentDay').text(today.format('LL'));
-var tz = moment.tz.guess ();
-console.log(tz);
-$('#currentTime').moment.tz.guess();
+
+var currentDate = new Date();
+
+var currentHour = currentDate.getHours();
+
 
 
 const rows = document.getElementsByClassName("row");
-let currentHour = parseInt(moment(stillUtc).local().format('HH:mm:ss'));
+
 
 Array.from(rows).forEach(row => {
+    
     let
         rowIdString = row.id,
         rowHour;
@@ -16,12 +21,12 @@ Array.from(rows).forEach(row => {
         rowHour = parseInt(rowIdString);
     }
     if (rowHour) {
-        // Compares row id to current hour and sets color accordingly
+     
         if (currentHour === rowHour) {
             setColor(row, "red");
-        } else if ((currentHour < rowHour) && (currentHour > rowHour - 6)) {
+        } else if ((currentHour < rowHour)){
             setColor(row, "green");
-        } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
+        } else if ((currentHour > rowHour)){
             setColor(row, "lightgrey");
         } else {
             setColor(row, "white");
@@ -33,4 +38,16 @@ function setColor(element, color) {
     element.style.backgroundColor = color;
 }
 
+function saveEvent () {
+    var input = document.getElementById("inputBox");
 
+    localStorage.setItem("server", input.value());
+    
+    var storedValue = localStorage.getItem("server"); 
+}
+
+console.log(textContent);
+for (i = 0; i < textContent.length; i++) {
+
+    textContent[i].addEventListener("click", saveEvent)
+}
