@@ -41,15 +41,6 @@ function setColor(element, color) {
 }
 
 function saveEvent (showList) {
-    // showList = [];
-    // for (i = 0; i < textContent.length; i++) {
-    //     console.log(textContent[i]);
-    //     if (textContent[i].value != ""){
-    //         console.log(show);
-    //         show = {name: textContent[i].name, text: textContent[i].value};
-    //         showList.push(show);
-    //     }
-    // }
    var valueToSave = showList.target.previousElementSibling.children[0].value;
    var keyToSave = showList.target.previousElementSibling.children[0].name;
 
