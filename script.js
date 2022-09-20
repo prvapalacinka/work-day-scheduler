@@ -41,18 +41,19 @@ function setColor(element, color) {
 }
 
 function saveEvent (showList) {
-    showList = [];
-    for (i = 0; i < textContent.length; i++) {
-        console.log(textContent[i]);
-        if (textContent[i].value != ""){
-            console.log(show);
-            show = {name: textContent[i].name, text: textContent[i].value};
-            showList.push(show);
-        }
-    }
-    console.log(showList);
+    // showList = [];
+    // for (i = 0; i < textContent.length; i++) {
+    //     console.log(textContent[i]);
+    //     if (textContent[i].value != ""){
+    //         console.log(show);
+    //         show = {name: textContent[i].name, text: textContent[i].value};
+    //         showList.push(show);
+    //     }
+    // }
+   var valueToSave = showList.target.previousElementSibling.children[0].value;
+   var keyToSave = showList.target.previousElementSibling.children[0].name;
 
-    localStorage.setItem("showList", JSON.stringify(showList));
+    localStorage.setItem(keyToSave, valueToSave);
 
 }
 
@@ -68,5 +69,11 @@ for (i = 0; i < textContent.length; i++) {
 }
 
 for (i = 0; i < saveContent.length; i++) {
-    saveContent[i].addEventListener("click", saveEvent(showList))
+    saveContent[i].addEventListener("click", saveEvent)
+}
+
+for (i = 0; i < textContent.length; i++) {
+    var savedText = localStorage.getItem(i+9);
+    console.log(savedText);
+    textContent[i].value = savedText;
 }
