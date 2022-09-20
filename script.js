@@ -1,6 +1,6 @@
 var saveContent = document.querySelectorAll("#saveButton");
 var textContent = document.querySelectorAll("#inputBox");
-
+var showList = JSON.parse(localStorage.getItem('showList') || "[]");
 
 var today = moment (); 
 $('#currentDay').text(today.format('LL'));
@@ -57,16 +57,8 @@ function saveEvent (showList) {
 
 }
 
-var showList = JSON.parse(localStorage.getItem('showList') || "[]");
-console.log(showList);
-for (i = 0; i < textContent.length; i++) {
-    for(j = 0; j < showList.length; j++) {
-        if (textContent[i].name === showList[j].name){
-            textContent[i].value = showList[j].value;
-        }
-    }
 
-}
+
 
 for (i = 0; i < saveContent.length; i++) {
     saveContent[i].addEventListener("click", saveEvent)
